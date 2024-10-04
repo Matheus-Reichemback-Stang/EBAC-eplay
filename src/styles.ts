@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const colors = {
   white: '#eeeeee',
@@ -21,10 +21,17 @@ export const GlobalCss = createGlobalStyle`
     color: ${colors.white};
     padding-top: 40px;
   }
+
+  .container{
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+  }
 `
 
-export const Container = styled.div`
-  max-width: 1024px;
-  width: 100%;
-  margin: 0 auto;
-`
+// Substituído pela classe container no GlobalCss
+// export const Container = styled.div`
+//   max-width: 1024px;
+//   width: 100%;
+//   margin: 0 auto;
+// `
