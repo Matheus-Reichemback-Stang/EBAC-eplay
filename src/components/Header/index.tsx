@@ -1,3 +1,5 @@
+// React Router Dom
+import { Link } from 'react-router-dom'
 // Style Sheet
 import * as S from './styles'
 // Images
@@ -13,7 +15,7 @@ const Header = () => {
           <nav>
             <S.Links>
               <S.LinkItem>
-                <a href="#">Categorias</a>
+                <Link to="/categories">Categorias</Link>
               </S.LinkItem>
               <S.LinkItem>
                 <a href="#">Novidades</a>
