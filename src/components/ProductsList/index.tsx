@@ -9,7 +9,7 @@ import Game from '../../models/Game'
 
 export type Props = {
   title: string
-  background: 'gray' | 'black'
+  background: 'grey' | 'black'
   games: Game[]
 }
 

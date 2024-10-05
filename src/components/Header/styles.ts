@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { colors } from '../../styles'
 
 export const HeaderBar = styled.header`
-  background-color: ${colors.gray};
+  background-color: ${colors.grey};
   padding: 24px;
   border-radius: 16px;
   margin-bottom: 80px;
