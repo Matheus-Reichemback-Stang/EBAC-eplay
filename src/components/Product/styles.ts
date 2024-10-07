@@ -3,7 +3,7 @@ import { colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
-  background-color: ${colors.grey};
+  background-color: ${colors.gray};
   border-radius: 8px;
   padding: 8px;
   position: relative;
