@@ -1,108 +1,53 @@
+// External Dependencies
+import { useEffect, useState } from 'react'
+
+// Internal Dependency
+import { Game } from '../Home'
+
 // Component
 import ProductsList from '../../components/ProductsList'
 
-// Class
-import Game from '../../models/Game'
-
-// Images
-import resident from '../../assets/images/resident.png'
-import diablo from '../../assets/images/diablo.png'
-import zelda from '../../assets/images/zelda.png'
-import starWars from '../../assets/images/star_wars.png'
-
-const promocoes: Game[] = [
-  {
-    id: 1,
-    image: resident,
-    infos: ['R$ 250,00', '-10%'],
-    title: 'Resident Evil 4 - Remake',
-    category: 'Ação',
-    system: 'Windows',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 2,
-    image: zelda,
-    infos: ['R$ 1000,00', '-80%'],
-    title: 'Zelda',
-    category: 'RPG',
-    system: 'Nintendo Switch',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 3,
-    image: resident,
-    infos: ['R$ 250,00', '-10%'],
-    title: 'Resident Evil 4 - Remake',
-    category: 'Ação',
-    system: 'Windows',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 4,
-    image: zelda,
-    infos: ['R$ 1000,00', '-80%'],
-    title: 'Zelda',
-    category: 'RPG',
-    system: 'Nintendo Switch',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  }
-]
-
-const emBreve: Game[] = [
-  {
-    id: 5,
-    image: diablo,
-    infos: ['12/09'],
-    title: 'Diablo',
-    category: 'Ação/RPG',
-    system: 'PS5',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 6,
-    image: starWars,
-    infos: ['17/05'],
-    title: 'Star Wars',
-    category: 'Sci-Fi',
-    system: 'Windows',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 7,
-    image: diablo,
-    infos: ['12/09'],
-    title: 'Diablo',
-    category: 'Ação/RPG',
-    system: 'PS5',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 8,
-    image: starWars,
-    infos: ['17/05'],
-    title: 'Star Wars',
-    category: 'Sci-Fi',
-    system: 'Windows',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  }
-]
-
 const Categories = () => {
+  const [gamesRpg, setGamesRpg] = useState<Game[]>([])
+  const [gamesAcao, setGamesAcao] = useState<Game[]>([])
+  const [gamesEsportes, setGamesEsportes] = useState<Game[]>([])
+  const [gamesSimulacao, setGamesSimulacao] = useState<Game[]>([])
+  const [gamesLuta, setGamesLuta] = useState<Game[]>([])
+
+  useEffect(() => {
+    // RPG
+    fetch('https://fake-api-tau.vercel.app/api/eplay/rpg')
+      .then((res) => res.json())
+      .then((res) => setGamesRpg(res))
+    // Ação
+    fetch('https://fake-api-tau.vercel.app/api/eplay/acao')
+      .then((res) => res.json())
+      .then((res) => setGamesAcao(res))
+    // Esportes
+    fetch('https://fake-api-tau.vercel.app/api/eplay/esportes')
+      .then((res) => res.json())
+      .then((res) => setGamesEsportes(res))
+    // Simulação
+    fetch('https://fake-api-tau.vercel.app/api/eplay/simulacao')
+      .then((res) => res.json())
+      .then((res) => setGamesSimulacao(res))
+    // Luta
+    fetch('https://fake-api-tau.vercel.app/api/eplay/luta')
+      .then((res) => res.json())
+      .then((res) => setGamesLuta(res))
+  }, [])
+
   return (
     <>
-      <ProductsList games={promocoes} title="RPG" background="gray" />
-      <ProductsList games={emBreve} title="Ação" background="black" />
-      <ProductsList games={promocoes} title="Aventura" background="gray" />
-      <ProductsList games={emBreve} title="FPS" background="black" />
+      <ProductsList games={gamesRpg} title="RPG" background="black" />
+      <ProductsList games={gamesAcao} title="Ação" background="gray" />
+      <ProductsList games={gamesEsportes} title="Esportes" background="black" />
+      <ProductsList
+        games={gamesSimulacao}
+        title="Simulação"
+        background="gray"
+      />
+      <ProductsList games={gamesLuta} title="Luta" background="black" />
     </>
   )
 }

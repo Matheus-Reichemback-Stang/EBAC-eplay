@@ -1,103 +1,53 @@
+import { useEffect, useState } from 'react'
+
 // Components
 import Banner from '../../components/Banner'
 import ProductsList from '../../components/ProductsList'
 
-// Class
-import Game from '../../models/Game'
+export interface GalleryItem {
+  type: 'image' | 'video'
+  url: string
+}
 
-// Images
-import resident from '../../assets/images/resident.png'
-import diablo from '../../assets/images/diablo.png'
-import zelda from '../../assets/images/zelda.png'
-import starWars from '../../assets/images/star_wars.png'
-
-const promocoes: Game[] = [
-  {
-    id: 1,
-    image: resident,
-    infos: ['R$ 250,00', '-10%'],
-    title: 'Resident Evil 4 - Remake',
-    category: 'Ação',
-    system: 'Windows',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 2,
-    image: zelda,
-    infos: ['R$ 1000,00', '-80%'],
-    title: 'Zelda',
-    category: 'RPG',
-    system: 'Nintendo Switch',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 3,
-    image: resident,
-    infos: ['R$ 250,00', '-10%'],
-    title: 'Resident Evil 4 - Remake',
-    category: 'Ação',
-    system: 'Windows',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 4,
-    image: zelda,
-    infos: ['R$ 1000,00', '-80%'],
-    title: 'Zelda',
-    category: 'RPG',
-    system: 'Nintendo Switch',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
+export type Game = {
+  id: number
+  name: string
+  description: string
+  release_date?: string
+  prices: {
+    discount?: number
+    old?: number
+    current?: number
   }
-]
-
-const emBreve: Game[] = [
-  {
-    id: 5,
-    image: diablo,
-    infos: ['12/09'],
-    title: 'Diablo',
-    category: 'Ação/RPG',
-    system: 'PS5',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 6,
-    image: starWars,
-    infos: ['17/05'],
-    title: 'Star Wars',
-    category: 'Sci-Fi',
-    system: 'Windows',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 7,
-    image: diablo,
-    infos: ['12/09'],
-    title: 'Diablo',
-    category: 'Ação/RPG',
-    system: 'PS5',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
-  },
-  {
-    id: 8,
-    image: starWars,
-    infos: ['17/05'],
-    title: 'Star Wars',
-    category: 'Sci-Fi',
-    system: 'Windows',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit eius natus at provident inventore quibusdam'
+  details: {
+    category: string
+    system: string
+    developer: string
+    publisher: string
+    languages: string[]
   }
-]
+  media: {
+    thumbnail: string
+    cover: string
+    gallery: GalleryItem[]
+  }
+}
 
 const Home = () => {
+  const [promocoes, setPromocoes] = useState<Game[]>([])
+  const [emBreve, setEmBreve] = useState<Game[]>([])
+
+  useEffect(() => {
+    // Promoções
+    fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
+      .then((res) => res.json())
+      .then((res) => setPromocoes(res))
+    // Em-Breve
+    fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
+      .then((res) => res.json())
+      .then((res) => setEmBreve(res))
+  }, [])
+
   return (
     <>
       <Banner />

@@ -3,9 +3,7 @@ import * as S from './styles'
 
 // Component
 import Product from '../Product'
-
-// Class
-import Game from '../../models/Game'
+import { Game } from '../../pages/Home'
 
 export type Props = {
   title: string
@@ -13,7 +11,32 @@ export type Props = {
   games: Game[]
 }
 
+// Por estar definindo o paremetro como 0, ele fica com esse valor padrão
+// caso a função tenha um parametro undefined
+export const priceFormat = (price = 0) => {
+  // Intl - Serve para Internacionalização de dados
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(price)
+}
 const ProductsList = ({ title, background, games }: Props) => {
+  const getGameTags = (game: Game) => {
+    const tags = []
+
+    if (game.release_date) {
+      tags.push(game.release_date)
+    }
+    if (game.prices.discount) {
+      tags.push(`${game.prices.discount}%`)
+    }
+    if (game.prices.current) {
+      tags.push(priceFormat(game.prices.current))
+    }
+
+    return tags
+  }
+
   return (
     <S.Container background={background}>
       <div className="container">
@@ -22,11 +45,11 @@ const ProductsList = ({ title, background, games }: Props) => {
           {games.map((game) => (
             <Product
               key={game.id}
-              image={game.image}
-              infos={game.infos}
-              title={game.title}
-              category={game.category}
-              system={game.system}
+              image={game.media.thumbnail}
+              infos={getGameTags(game)}
+              title={game.name}
+              category={game.details.category}
+              system={game.details.system}
               description={game.description}
             />
           ))}
