@@ -19,7 +19,7 @@ export const Links = styled.ul`
 `
 
 export const Link = styled.a`
-  color: ${colors.lightGrey};
+  color: ${colors.lightGray};
   text-decoration: none;
   margin-right: 8px;
 `

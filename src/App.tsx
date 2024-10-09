@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 
 // Rotas do site
 import Rotas from './routes'
+import Cart from './components/Cart'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         </div>
         <Rotas />
         <Footer />
+        <Cart />
       </BrowserRouter>
     </Provider>
   )
