@@ -9,6 +9,7 @@ export type Props = {
   title: string
   background: 'gray' | 'black'
   games: Game[]
+  id?: string
 }
 
 // Por estar definindo o paremetro como 0, ele fica com esse valor padrão
@@ -20,7 +21,7 @@ export const priceFormat = (price = 0) => {
     currency: 'BRL'
   }).format(price)
 }
-const ProductsList = ({ title, background, games }: Props) => {
+const ProductsList = ({ title, background, games, id }: Props) => {
   const getGameTags = (game: Game) => {
     const tags = []
 
@@ -38,7 +39,7 @@ const ProductsList = ({ title, background, games }: Props) => {
   }
 
   return (
-    <S.Container background={background}>
+    <S.Container id={id} background={background}>
       <div className="container">
         <S.Title>{title}</S.Title>
         <S.List>
