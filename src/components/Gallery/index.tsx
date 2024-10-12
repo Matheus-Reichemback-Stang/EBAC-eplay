@@ -4,9 +4,6 @@ import { useState } from 'react'
 // Component
 import Section from '../Section'
 
-// Type
-import { GalleryItem } from '../../pages/Home'
-
 // Images of Icons
 import play from '../../assets/images/play.png'
 import zoom from '../../assets/images/zoom.png'

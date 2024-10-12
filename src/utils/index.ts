@@ -1,7 +1,5 @@
 // Por estar definindo o paremetro como 0, ele fica com esse valor padrão
 
-import { Game } from '../pages/Home'
-
 // caso a função tenha um parametro undefined
 export const priceFormat = (amount = 0) => {
   // Intl - Serve para Internacionalização de dados

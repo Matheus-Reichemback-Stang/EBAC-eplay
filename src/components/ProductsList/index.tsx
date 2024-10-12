@@ -2,9 +2,6 @@
 import Product from '../Product'
 import Loader from '../Loader'
 
-// Type
-import { Game } from '../../pages/Home'
-
 // Function
 import { priceFormat } from '../../utils/'
 
