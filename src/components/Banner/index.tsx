@@ -1,6 +1,7 @@
 // Components
 import Tag from '../Tag'
 import Button from '../Button'
+import Loader from '../Loader'
 
 // Functions
 import { priceFormat } from '../../utils/'
@@ -15,7 +16,7 @@ const Banner = () => {
   if (!game) {
     return (
       <>
-        <h3>Carregando...</h3>
+        <Loader />
       </>
     )
   }
