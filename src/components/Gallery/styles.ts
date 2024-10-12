@@ -24,6 +24,7 @@ export const Action = styled.div`
 
 export const Item = styled.li`
   position: relative;
+
   > img {
     border: 2px solid ${colors.white};
     border-radius: 8px;
@@ -52,7 +53,7 @@ export const Modal = styled.div`
   align-items: center;
   justify-content: center;
 
-  &.visible {
+  &.is-visible {
     display: flex;
   }
 

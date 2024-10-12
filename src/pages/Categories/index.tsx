@@ -1,11 +1,7 @@
-// External Dependencies
-import { useEffect, useState } from 'react'
-
-// Internal Dependency
-import { Game } from '../Home'
-
 // Component
 import ProductsList from '../../components/ProductsList'
+
+// Functions
 import {
   useGetActionGamesQuery,
   useGetFightGamesQuery,

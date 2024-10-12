@@ -1,9 +1,12 @@
-// Style Sheet
-import * as S from './styles'
-
 // Component
 import Product from '../Product'
 import { Game } from '../../pages/Home'
+
+// Function
+import { priceFormat } from '../../utils/'
+
+// Style Sheet
+import * as S from './styles'
 
 export type Props = {
   title: string
@@ -12,15 +15,6 @@ export type Props = {
   id?: string
 }
 
-// Por estar definindo o paremetro como 0, ele fica com esse valor padrão
-// caso a função tenha um parametro undefined
-export const priceFormat = (price = 0) => {
-  // Intl - Serve para Internacionalização de dados
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(price)
-}
 const ProductsList = ({ title, background, games, id }: Props) => {
   const getGameTags = (game: Game) => {
     const tags = []

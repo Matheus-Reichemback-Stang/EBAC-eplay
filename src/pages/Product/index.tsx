@@ -1,15 +1,13 @@
 // External Dependecies
-import { useEffect, useState } from 'react'
 // useParams - Permite resgatar os parametros definidos na rota
 import { useParams } from 'react-router-dom'
-
-// Type
-import { Game } from '../Home'
 
 // Components
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import Gallery from '../../components/Gallery'
+
+// Function
 import { useGetGameQuery } from '../../services/api'
 
 const Product = () => {

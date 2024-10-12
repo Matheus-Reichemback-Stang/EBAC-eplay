@@ -1,17 +1,19 @@
 // External Dependecies
 import { useDispatch } from 'react-redux'
 
-// Actions
+// Components
+import Tag from '../Tag'
+import Button from '../Button'
+
+// Type
+import { Game } from '../../pages/Home'
+
+// Functions
 import { add, open } from '../../store/reducers/cart'
+import { priceFormat } from '../../utils/index'
 
 // Style Sheet
 import * as S from './styles'
-
-// Internal Dependecies
-import Tag from '../Tag'
-import Button from '../Button'
-import { Game } from '../../pages/Home'
-import { priceFormat } from '../ProductsList'
 
 type Props = {
   game: Game

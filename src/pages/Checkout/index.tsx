@@ -1,19 +1,20 @@
+// External dependencies
+import { useState } from 'react'
 // Yup faz a validação dos campos
 import * as Yup from 'yup'
 // Faz o controle do estado dos campos e tras informações a mais sobre o formulario
 import { useFormik } from 'formik'
-import { useState } from 'react'
-
-// API
-import { usePurchaseMutation } from '../../services/api'
 
 // Components
 import Button from '../../components/Button'
 import Card from '../../components/Card'
 
 // Images
-import boleto from '../../assets/images/boleto.png'
-import cartao from '../../assets/images/cartao.png'
+import barCode from '../../assets/images/boleto.png'
+import creditCard from '../../assets/images/cartao.png'
+
+// Function
+import { usePurchaseMutation } from '../../services/api'
 
 // Style Sheet
 import * as S from './styles'
@@ -21,9 +22,8 @@ import * as S from './styles'
 const Checkout = () => {
   const [payWithCard, setPayWithCard] = useState(false)
   // Quando se usa o POST ele retorna a requisição em sí(purchase - função que vai fazer o POST)
-  // e os objetos que vem no get também { isLoading, isError, data }
-  const [purchase, { isLoading, isError, data, isSuccess }] =
-    usePurchaseMutation()
+  // e os objetos que vem no get também { data, isSuccess }
+  const [purchase, { data, isSuccess }] = usePurchaseMutation()
 
   // Usando o Formik pra gerenciar os valores dos campos do formulário
   const form = useFormik({
@@ -271,14 +271,14 @@ const Checkout = () => {
                 isActive={!payWithCard}
                 onClick={() => setPayWithCard(false)}
               >
-                <img src={boleto} alt="Boleto" />
+                <img src={barCode} alt="Boleto" />
                 Boleto bancário
               </S.TabButton>
               <S.TabButton
                 isActive={payWithCard}
                 onClick={() => setPayWithCard(true)}
               >
-                <img src={cartao} alt="Cartão de crédito" />
+                <img src={creditCard} alt="Cartão de crédito" />
                 Cartão de crédito
               </S.TabButton>
               <div className="margin-top">

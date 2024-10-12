@@ -1,16 +1,19 @@
+// External Dependencies
 import { useDispatch, useSelector } from 'react-redux'
+
+// Components
+import Button from '../Button'
+import Tag from '../Tag'
+
+// Functions
+import { priceFormat } from '../../utils/'
 import { close, remove } from '../../store/reducers/cart'
 
+// Type
 import { RootReducer } from '../../store'
+
 // Style Sheet
 import * as S from './styles'
-
-// Component
-import Button from '../Button'
-
-import image from '../../assets/images/fundo_hogwarts.png'
-import Tag from '../Tag'
-import { priceFormat } from '../ProductsList'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)

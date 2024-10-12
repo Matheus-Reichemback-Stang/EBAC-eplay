@@ -1,15 +1,19 @@
+// External Dependency
 import { useState } from 'react'
 
+// Component
 import Section from '../Section'
+
+// Type
 import { GalleryItem } from '../../pages/Home'
+
+// Images of Icons
+import play from '../../assets/images/play.png'
+import zoom from '../../assets/images/zoom.png'
+import closeIcon from '../../assets/images/fechar.png'
 
 // Style Sheet
 import * as S from './styles'
-
-// Icons
-import play from '../../assets/images/play.png'
-import zoom from '../../assets/images/zoom.png'
-import close from '../../assets/images/fechar.png'
 
 type Props = {
   // Capa comum caso o type seja vídeo
@@ -21,6 +25,7 @@ type Props = {
 interface ModalState extends GalleryItem {
   isVisible: boolean
 }
+
 const Gallery = ({ defaultCover, name, items }: Props) => {
   const [modal, setModal] = useState<ModalState>({
     isVisible: false,
@@ -75,15 +80,11 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
           ))}
         </S.Items>
       </Section>
-      <S.Modal className={modal.isVisible ? 'visible' : ''}>
+      <S.Modal className={modal.isVisible ? 'is-visible' : ''}>
         <S.ModalContent className="container">
           <header>
             <h4>{name}</h4>
-            <img
-              src={close}
-              alt="Ícone de fechar"
-              onClick={() => closeModal()}
-            />
+            <img src={closeIcon} alt="Ícone de fechar" onClick={closeModal} />
           </header>
           {modal.type === 'image' ? (
             <img src={modal.url} />
@@ -91,7 +92,7 @@ const Gallery = ({ defaultCover, name, items }: Props) => {
             <iframe src={modal.url} frameBorder={0} />
           )}
         </S.ModalContent>
-        <div className="overlay" onClick={() => closeModal()}></div>
+        <div className="overlay" onClick={closeModal}></div>
       </S.Modal>
     </>
   )
